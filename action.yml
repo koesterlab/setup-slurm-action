@@ -6,10 +6,12 @@ runs:
     # prior to slurm-setup we need the podmand-correct command
     # see https://github.com/containers/podman/issues/13338
     - name: Download slurm ansible roles
+      shell: bash -e {0}
       run: |
         ansible-galaxy install galaxyproject.slurm,1.0.1
 
     - name: Update apt cache
+      shell: bash -e {0}
       run: |
         sudo apt-get update
 
@@ -62,15 +64,18 @@ runs:
                     uid: 1002
 
     - name: Set XDG_RUNTIME_DIR
+      shell: bash -e {0}
       run: |
         mkdir -p /tmp/1002-runtime # work around podman issue (https://github.com/containers/podman/issues/13338)
         echo XDG_RUNTIME_DIR=/tmp/1002-runtime >> $GITHUB_ENV
 
     - name: Setup slurm
+      shell: bash -e {0}
       run: |
         ansible-playbook slurm-playbook.yml || (journalctl -xe && exit 1)
 
     - name: Add Slurm Account
+      shell: bash -e {0}
       run: |
         echo "Waiting 10 seconds for slurm cluster to be fully initialized."
         sleep 10
@@ -78,12 +83,14 @@ runs:
         sudo sacctmgr -i create user "Name=runner" "Account=runner"
 
     - name: Configure proxy for sacct
+      shell: bash -e {0}
       run: |
         # By using this script instead of the real sacct, we avoid the need to install
         # a full slurmdbd in the CI.
         echo 'alias sacct=.github/workflows/scripts/sacct-proxy.py' >> ~/.bashrc
 
     - name: Test slurm submission
+      shell: bash -e {0}
       run: |
         srun -vvvv echo "hello world"
         sudo cat /var/log/slurm/slurmd.log
