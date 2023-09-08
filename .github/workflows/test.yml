@@ -2,7 +2,7 @@ name: Test action
 
 on:
     push:
-        branches-ignore: [main]
+        branches: [main]
     # Remove the line above to run when pushing to master or main
     pull_request:
         branches: [main]
