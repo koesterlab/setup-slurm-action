@@ -1,0 +1,18 @@
+name: Test action
+
+on:
+    push:
+        branches-ignore: [main]
+    # Remove the line above to run when pushing to master or main
+    pull_request:
+        branches: [main]
+
+jobs:
+    test:
+        name: Test action
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v3
+
+            - uses: ./
