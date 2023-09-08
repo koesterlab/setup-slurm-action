@@ -77,8 +77,8 @@ runs:
     - name: Add Slurm Account
       shell: bash -e {0}
       run: |
-        echo "Waiting 10 seconds for slurm cluster to be fully initialized."
-        sleep 10
+        echo "Waiting 20 seconds for slurm cluster to be fully initialized."
+        sleep 20
         sudo sacctmgr -i create account "Name=runner"
         sudo sacctmgr -i create user "Name=runner" "Account=runner"
 

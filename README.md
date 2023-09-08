@@ -1,6 +1,7 @@
 # A Github Action for setting up a small slurm cluster
 
-The action can be used in the following way:
+This action utilizes https://github.com/galaxyproject/ansible-slurm for automatically setting up a SLURM cluster for testing purposes.
+It can be used in the following way:
 
 ```yaml
 
