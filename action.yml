@@ -1,5 +1,8 @@
 name: 'setup-slurm-action'
 description: 'Setup slurm cluster on GitHub Actions using https://github.com/galaxyproject/ansible-slurm'
+branding:
+  icon: arrow-down-circle
+  color: blue
 runs:
   using: "composite"
   steps:
