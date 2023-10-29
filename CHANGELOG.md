@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.3](https://www.github.com/koesterlab/setup-slurm-action/compare/v1.0.2...v1.0.3) (2023-10-29)
+
+
+### Miscellaneous Chores
+
+* cleanup steps ([19c13ef](https://www.github.com/koesterlab/setup-slurm-action/commit/19c13effce7365c3999e4642c7e9b4feda9c6d49))
+
 ### [1.0.2](https://www.github.com/koesterlab/setup-slurm-action/compare/v1.0.1...v1.0.2) (2023-10-29)
 
 
