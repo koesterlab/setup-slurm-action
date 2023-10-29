@@ -42,6 +42,7 @@ runs:
                     SlurmdSpoolDir: /tmp/slurmd # the default /var/lib/slurm/slurmd does not work because of noexec mounting in github actions
                     StateSaveLocation: /var/lib/slurm/slurmctld
                     AccountingStorageType: accounting_storage/slurmdbd
+                    MaxMemPerNode: 2000
                 slurmdbd_config:
                     StorageType: accounting_storage/mysql
                     PidFile: /run/slurmdbd.pid
