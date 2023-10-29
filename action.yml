@@ -27,7 +27,7 @@ runs:
           - name: Slurm all in One
             hosts: localhost
             roles:
-              - role: galaxyproject.slurm
+              - role: 1.0.1
                 become: true
             vars:
                 slurm_upgrade: true
