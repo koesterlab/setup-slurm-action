@@ -11,7 +11,7 @@ runs:
     - name: Download slurm ansible roles
       shell: bash -e {0}
       run: |
-        ansible-galaxy install galaxyproject.slurm,1.0.1
+        ansible-galaxy role install https://github.com/galaxyproject/ansible-slurm/archive/1.0.1.tar.gz
 
     - name: Apt prerequisites
       shell: bash -e {0}
@@ -42,6 +42,7 @@ runs:
                     SlurmdSpoolDir: /tmp/slurmd # the default /var/lib/slurm/slurmd does not work because of noexec mounting in github actions
                     StateSaveLocation: /var/lib/slurm/slurmctld
                     AccountingStorageType: accounting_storage/slurmdbd
+                    MaxMemPerNode: 2000
                 slurmdbd_config:
                     StorageType: accounting_storage/mysql
                     PidFile: /run/slurmdbd.pid
