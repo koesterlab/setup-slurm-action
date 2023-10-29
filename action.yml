@@ -98,6 +98,11 @@ runs:
         srun -vvvv echo "hello world"
         sudo cat /var/log/slurm/slurmd.log
 
+    - name: Show partition info
+      shell: bash -e {0}
+      run: |
+        scontrol show partition
+
     - name: Test sbatch submission
       shell: bash -e {0}
       run: |
