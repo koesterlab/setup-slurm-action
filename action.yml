@@ -92,8 +92,13 @@ runs:
         # a full slurmdbd in the CI.
         echo 'alias sacct=.github/workflows/scripts/sacct-proxy.py' >> ~/.bashrc
 
-    - name: Test slurm submission
+    - name: Test srun submission
       shell: bash -e {0}
       run: |
         srun -vvvv echo "hello world"
         sudo cat /var/log/slurm/slurmd.log
+
+    - name: Test sbatch submission
+      shell: bash -e {0}
+      run: |
+        sbatch -vvvv -N 1 --mem 5 --wrap "echo 'hello world'"
