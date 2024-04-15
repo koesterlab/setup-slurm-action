@@ -60,6 +60,18 @@ runs:
                       Sockets: 1
                       CoresPerSocket: 2
                       RealMemory: 2000
+                    - name: compute1
+                      State: UNKNOWN
+                      Sockets: 1
+                      CoresPerSocket: 2
+                      RealMemory: 2000
+                      Feature: any,specific1
+                    - name: compute2
+                      State: UNKNOWN
+                      Sockets: 1
+                      CoresPerSocket: 2
+                      RealMemory: 2000
+                      Feature: any,specific2
                 slurm_user:
                     comment: "Slurm Workload Manager"
                     gid: 1002
