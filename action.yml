@@ -1,5 +1,17 @@
 name: 'setup-slurm-action'
 description: 'Setup slurm cluster on GitHub Actions using https://github.com/galaxyproject/ansible-slurm'
+inputs:
+  nodes:
+    description: |
+      List of nodes and their resources to add to the cluster.
+      Note that this is a string field that needs to contain a YAML array with exactly 20 spaces of indentation, or it won't interpolate correctly
+    required: true
+    default: |
+                    - name: localhost
+                      State: UNKNOWN
+                      Sockets: 1
+                      CoresPerSocket: 2
+                      RealMemory: 2000
 branding:
   icon: arrow-down-circle
   color: blue
@@ -53,13 +65,8 @@ runs:
                     StoragePort: 8888
                     DbdHost: localhost
                 slurm_create_user: yes
-                #slurm_munge_key: "../../../munge.key"
                 slurm_nodes:
-                    - name: localhost
-                      State: UNKNOWN
-                      Sockets: 1
-                      CoresPerSocket: 2
-                      RealMemory: 2000
+                    ${{ inputs.nodes }}
                 slurm_user:
                     comment: "Slurm Workload Manager"
                     gid: 1002
