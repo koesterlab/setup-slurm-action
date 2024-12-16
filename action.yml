@@ -65,9 +65,9 @@ runs:
                 slurm_nodes:
                     - name: localhost
                       State: UNKNOWN
-                      Sockets: ${{ input.cpus }}
+                      Sockets: ${{ inputs.cpus }}
                       CoresPerSocket: 2
-                      RealMemory: ${{ input.memory }}
+                      RealMemory: ${{ inputs.memory }}
                 slurm_user:
                     comment: "Slurm Workload Manager"
                     gid: 1002
