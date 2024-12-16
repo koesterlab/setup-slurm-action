@@ -4,14 +4,12 @@ inputs:
   nodes:
     description: |
       List of nodes and their resources to add to the cluster.
-      Note that this is a string field that needs to contain a YAML array with exactly 20 spaces of indentation, or it won't interpolate correctly
+      This needs to be a string that represents a YAML array of YAML objects. 
+      Because indentation is tricky, you are advised to use the YAML flow style with [] and {}
+      delimiters since this style ignores indentation.
     required: true
-    default: |
-                    - name: localhost
-                      State: UNKNOWN
-                      Sockets: 1
-                      CoresPerSocket: 2
-                      RealMemory: 2000
+    default: >
+      [ { name: localhost, State: UNKNOWN, Sockets: 1, CoresPerSocket: 2, RealMemory: 2000 }
 branding:
   icon: arrow-down-circle
   color: blue
@@ -65,8 +63,7 @@ runs:
                     StoragePort: 8888
                     DbdHost: localhost
                 slurm_create_user: yes
-                slurm_nodes:
-                    ${{ inputs.nodes }}
+                slurm_nodes: ${{ inputs.nodes }}
                 slurm_user:
                     comment: "Slurm Workload Manager"
                     gid: 1002
