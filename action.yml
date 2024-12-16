@@ -1,15 +1,14 @@
 name: 'setup-slurm-action'
 description: 'Setup slurm cluster on GitHub Actions using https://github.com/galaxyproject/ansible-slurm'
 inputs:
-  nodes:
-    description: |
-      List of nodes and their resources to add to the cluster.
-      This needs to be a string that represents a YAML array of YAML objects. 
-      Because indentation is tricky, you are advised to use the YAML flow style with [] and {}
-      delimiters since this style ignores indentation.
+  memory:
+    description: Amount of memory in MB to allocate to this node
     required: true
-    default: >
-      [ { name: localhost, State: UNKNOWN, Sockets: 1, CoresPerSocket: 2, RealMemory: 2000 }
+    default: 2000
+  cpus:
+    description: Number of physical (not virtual) CPUs to allocate to the node
+    required: true
+    default: 1
 branding:
   icon: arrow-down-circle
   color: blue
@@ -63,7 +62,12 @@ runs:
                     StoragePort: 8888
                     DbdHost: localhost
                 slurm_create_user: yes
-                slurm_nodes: ${{ inputs.nodes }}
+                slurm_nodes:
+                    - name: localhost
+                      State: UNKNOWN
+                      Sockets: ${{ input.cpus }}
+                      CoresPerSocket: 2
+                      RealMemory: ${{ input.memory }}
                 slurm_user:
                     comment: "Slurm Workload Manager"
                     gid: 1002
