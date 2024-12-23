@@ -84,8 +84,7 @@ runs:
       shell: bash -e {0}
       run: |
         sudo retry --until=success -- sacctmgr -i create account "Name=runner"
-        sleep 5
-        sudo sacctmgr -i create user "Name=runner" "Account=runner"
+        sudo retry --until=success -- sacctmgr -i create user "Name=runner" "Account=runner"
 
     - name: Test srun submission
       shell: bash -e {0}
