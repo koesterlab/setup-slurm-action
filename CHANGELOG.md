@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.4](https://www.github.com/koesterlab/setup-slurm-action/compare/v1.0.3...v1.0.4) (2024-12-23)
+
+
+### Bug Fixes
+
+* avoid deprecated plugin ([#8](https://www.github.com/koesterlab/setup-slurm-action/issues/8)) ([90c050a](https://www.github.com/koesterlab/setup-slurm-action/commit/90c050a4a4bc87347d8b3540c0a65a0f539ec0cb))
+
 ### [1.0.3](https://www.github.com/koesterlab/setup-slurm-action/compare/v1.0.2...v1.0.3) (2023-10-29)
 
 
