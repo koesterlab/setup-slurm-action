@@ -51,7 +51,7 @@ runs:
                     SlurmdSpoolDir: /tmp/slurmd # the default /var/lib/slurm/slurmd does not work because of noexec mounting in github actions
                     StateSaveLocation: /var/lib/slurm/slurmctld
                     AccountingStorageType: accounting_storage/slurmdbd
-                    SelectType: select/cons_res
+                    SelectType: select/cons_tres
                 slurmdbd_config:
                     StorageType: accounting_storage/mysql
                     PidFile: /run/slurmdbd.pid
@@ -92,7 +92,7 @@ runs:
       shell: bash -e {0}
       run: |
         sudo retry --until=success -- sacctmgr -i create account "Name=runner"
-        sudo sacctmgr -i create user "Name=runner" "Account=runner"
+        sudo retry --until=success -- sacctmgr -i create user "Name=runner" "Account=runner"
 
     - name: Test srun submission
       shell: bash -e {0}
