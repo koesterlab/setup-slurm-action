@@ -1,5 +1,14 @@
 name: 'setup-slurm-action'
 description: 'Setup slurm cluster on GitHub Actions using https://github.com/galaxyproject/ansible-slurm'
+inputs:
+  memory:
+    description: Amount of memory in MB to allocate to this node
+    required: true
+    default: 2000
+  cpus:
+    description: Number of physical (not virtual) CPUs to allocate to the node
+    required: true
+    default: 1
 branding:
   icon: arrow-down-circle
   color: blue
@@ -53,13 +62,12 @@ runs:
                     StoragePort: 8888
                     DbdHost: localhost
                 slurm_create_user: yes
-                #slurm_munge_key: "../../../munge.key"
                 slurm_nodes:
                     - name: localhost
                       State: UNKNOWN
-                      Sockets: 1
+                      Sockets: ${{ inputs.cpus }}
                       CoresPerSocket: 2
-                      RealMemory: 2000
+                      RealMemory: ${{ inputs.memory }}
                 slurm_user:
                     comment: "Slurm Workload Manager"
                     gid: 1002
