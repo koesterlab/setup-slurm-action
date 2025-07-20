@@ -91,8 +91,8 @@ runs:
     - name: Add Slurm Account
       shell: bash -e {0}
       run: |
-        sudo retry --until=success -- sacctmgr -i create account "Name=runner"
-        sudo retry --until=success -- sacctmgr -i create user "Name=runner" "Account=runner"
+        sudo retry --times=24 --delay=5 --until=success -- sacctmgr -i create account "Name=runner"
+        sudo retry --times=24 --delay=5 --until=success -- sacctmgr -i create user "Name=runner" "Account=runner"
 
     - name: Test srun submission
       shell: bash -e {0}
