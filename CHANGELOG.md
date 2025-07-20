@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/koesterlab/setup-slurm-action/compare/v1.0.4...v1.1.0) (2025-07-20)
+
+
+### Features
+
+* allow node configuration ([#7](https://www.github.com/koesterlab/setup-slurm-action/issues/7)) ([b9b0083](https://www.github.com/koesterlab/setup-slurm-action/commit/b9b00832206e7d08c953a3ed81cd6e0ccc9b4620))
+
+
+### Bug Fixes
+
+* Limit sacctmgr retries to 2 mins ([#10](https://www.github.com/koesterlab/setup-slurm-action/issues/10)) ([b09082c](https://www.github.com/koesterlab/setup-slurm-action/commit/b09082ccd500263a005b2a2b6557040ac8e0323f))
+
 ### [1.0.4](https://www.github.com/koesterlab/setup-slurm-action/compare/v1.0.3...v1.0.4) (2024-12-23)
 
 
